@@ -1,0 +1,16 @@
+name: "dbt action"
+description: "Run and schedule dbt commands directly in your Github repo"
+
+inputs:
+  dbt_command:
+    description: "dbt command"
+    default: "dbt run"
+    required: true
+outputs:
+  result:
+    description: "Success or failure of the dbt command"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.dbt_command }}
